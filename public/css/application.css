@@ -1,0 +1,41 @@
+.container {
+  margin: 20px auto;
+  width: 800px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+
+.container h1 {
+  font-size: 17pt;
+
+}
+
+#map {
+height: 400px;
+width: 100%;
+}
+
+.login {
+  margin: 20px;
+  padding: 20px;
+}
+
+.errors {
+  color: red;
+}
+
+.nav a {
+  margin: 5px;
+  padding: 10px;
+  display: inline-block;
+}
+
+.nav form {
+  margin: 5px;
+  padding: 10px;
+  display: inline-block;
+}
+
+body {
+  background-color: AntiqueWhite;
+}

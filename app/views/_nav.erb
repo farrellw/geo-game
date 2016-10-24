@@ -1,0 +1,17 @@
+<div class = "nav">
+  <span class = "nav-title"><h2>Welcome to know your Geography!</h2>
+  </span>
+<% if logged_in? %>
+  <form class = "button-form" action="/logout" method="post">
+    <input type="hidden" name = "_method" value="delete">
+    <input type="submit" value="Logout">
+  </form>
+  <a href="/">Home</a>
+  <a href="/users/<%=session[:user_id]%>"> My Games </a>
+  <a href="/games/new">Play Now!</a>
+<%else%>
+  <a href="/">Home</a>
+  <a href="/login">Login Now</a>
+  <a href="/users/new">Register Now</a>
+<% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+<% if logged_in? %>
+
+  <form action="/games", method="post">
+
+    <h5>Start a new game</h5> <br>
+
+    <label for="difficulty"> Difficulty level </input>
+    <select name="difficulty">
+      <option value= "6" > Easy</option>
+      <option value= "4" > Medium</option>
+      <option value= "2" > Hard</option>
+    </select> <br><br>
+
+    <input type="submit" value="Start your game">
+
+  </form>
+
+<% else %>
+
+  <p> <a href="/login">Login</a> or <a href="/users/new">Register Now</a> to play a game!! </p>
+
+<% end %>
+</div>

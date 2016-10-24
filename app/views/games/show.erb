@@ -1,0 +1,46 @@
+<section class="container">
+  <h4>You are looking for <%=@game.country.name%>.  Goodluck!!!!</h4>
+  <div>
+    <h4>Make your guess below</h4>
+    <form action="/games/<%=@game.id%>/guess" method="POST">
+      <label for "latitude" >Latitude</label>
+      <input type="number" step="any" name="latitude" min="-90" max="90" required>
+      <label for "Longitude" >Longitude</label>
+      <input type="number" step="any" name="longitude" min="-180" max="180" required>
+      <input type="submit" value="submit"</input>
+    </form>
+  </div>
+
+<% latitude_guess_marker = 0 %>
+<% longitude_guess_marker = 0  %>
+  <% if @last_guess %>
+    <ul>
+      <li>Game number <%= @last_guess.game_id %> </li>
+      <li>Previous latitude guess: <%= @last_guess.lat_guess %> </li>
+      <% latitude_guess_marker = @last_guess.lat_guess %>
+      <li>Previous longitude guess: <%= @last_guess.long_guess %> </li>
+      <% longitude_guess_marker = @last_guess.long_guess %>
+      <li>Guess result: <%= boolean_to_string(@last_guess.correct_or_false) %> </li>
+    </ul>
+  <%end%>
+
+</section>
+
+<div id="map"></div>
+<script>
+  function initMap() {
+    var uluru = {lat: <%=latitude_guess_marker%>, lng: <%=longitude_guess_marker%>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 3,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
+<%token = ENV["GOOGLE_MAPS_ACCESS_TOKEN"] %>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=<%= token %>&callback=initMap">
+</script>

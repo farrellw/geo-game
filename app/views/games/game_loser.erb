@@ -1,0 +1,17 @@
+<div class= "container">
+  <h4>Sorry you lost the game <%= current_user.username %> </h4>
+  <p> You found <%= @country.name %> at <%= @country.latitude %> latitude and <%= @country.longitude %> longitude.</p>
+  <% count = 1 %>
+  <% @guesses.each do |guess| %>
+  <ul>
+    <li>Guess #<%= count %></li>
+    <li>Lat Guess: <%= guess.lat_guess %> </li>
+    <li>Long Guess: <%= guess.long_guess %> </li>
+    <li>Guess result: <%= boolean_to_string(guess.correct_or_false) %> </li>
+  </ul>
+  <br>
+  <% count += 1 %>
+  <%end%>
+  <a href="/games/new">Play Again!</a>
+</div>
+

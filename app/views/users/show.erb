@@ -1,0 +1,12 @@
+<div class="container">
+  <h4>Welcome to <%= @user_object.username %>'s homepage</h4>
+  <p>This user has played <% @games_played.length %> games</p>
+  <ul>
+    <% @games_played.each do |game| %>
+      <li>Sought after: <%= game.country.name %> </li>
+      <li>Took <%=game.guesses.length%> guesses</li>
+      <li>And did they win the game? <%=game.guesses.last.correct_or_false%></li>
+      <li>**************************************</li><br>
+    <%end%>
+  </ul>
+</div>

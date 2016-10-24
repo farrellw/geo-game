@@ -1,5 +1,5 @@
-Get There
+Geography App
 
-Summary
+As a former teacher, many students (and yes, any adults) struggle with spatial geography.  Understanding where countries and states are in the world is important.
 
-Use Waze, Weather, and Twilio APIs to plan your commute.
+This app uses the google app and ---insert other technologies---

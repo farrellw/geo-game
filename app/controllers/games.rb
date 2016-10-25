@@ -3,8 +3,13 @@ get '/games/new' do
 end
 
 post '/games' do
+  if params[:type] == "state"
+  elsif params[:type] == "country"
+    findable = Country.find_by(id: rand(1..236))
+  end 
+  locatable_array = 
   country = Country.find_by(id: rand(1..236))
-  @game = Game.create(user_id: current_user.id, country_id: country.id, difficulty: params[:difficulty].to_i)
+  @game = Game.create(user_id: current_user.id, country_id: findable.id, difficulty: params[:difficulty].to_i)
   redirect to("/games/#{@game.id}")
 end
 

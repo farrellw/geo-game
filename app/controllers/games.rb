@@ -8,8 +8,6 @@ post '/games' do
   elsif params[:type] == "country"
     locatable = Country.find_by(id: rand(1..236))
   end
-  p "curren user"
-  p current_user
   @game = Game.create(user_id: current_user.id, locatable_id: locatable.id, locatable_type: locatable.class.to_s, difficulty: params[:difficulty].to_i)
   redirect to("/games/#{@game.id}")
 end

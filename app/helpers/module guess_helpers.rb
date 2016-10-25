@@ -5,11 +5,11 @@ module GuessHelper
   end
 
   def correct_guess(lat_guess, long_guess)
-    @country = current_game.country
-    lat_guess_min = @country.latitude - 10
-    lat_guess_max = @country.latitude + 10
-    long_guess_min = @country.longitude - 10
-    long_guess_max = @country.longitude + 10
+    locatable = current_game.locatable
+    lat_guess_min = locatable.latitude - 10
+    lat_guess_max = locatable.latitude + 10
+    long_guess_min = locatable.longitude - 10
+    long_guess_max = locatable.longitude + 10
     if lat_guess <= lat_guess_min || lat_guess >= lat_guess_max
       return false
     elsif long_guess <= long_guess_min || long_guess >= long_guess_max

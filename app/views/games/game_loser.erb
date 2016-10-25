@@ -1,6 +1,6 @@
 <div class= "container">
   <h4>Sorry you lost the game <%= current_user.username %> </h4>
-  <p> You found <%= @country.name %> at <%= @country.latitude %> latitude and <%= @country.longitude %> longitude.</p>
+  <p> You found <%= @locatable.name %> at <%= @locatable.latitude %> latitude and <%= @locatable.longitude %> longitude.</p>
   <% count = 1 %>
   <% @guesses.each do |guess| %>
   <ul>

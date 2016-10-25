@@ -4,12 +4,11 @@ end
 
 post '/games' do
   if params[:type] == "state"
+    locatable = State.find_by(id: rand(1..50))
   elsif params[:type] == "country"
-    findable = Country.find_by(id: rand(1..236))
-  end 
-  locatable_array = 
-  country = Country.find_by(id: rand(1..236))
-  @game = Game.create(user_id: current_user.id, country_id: findable.id, difficulty: params[:difficulty].to_i)
+    locatable = Country.find_by(id: rand(1..236))
+  end
+  @game = Game.create(user_id: current_user.id, locatable_id: locatable.id, locatable_type: locatable.class.to_s, difficulty: params[:difficulty].to_i)
   redirect to("/games/#{@game.id}")
 end
 
@@ -20,7 +19,7 @@ end
 
 get '/games/:game_id/winner' do
   @game = current_game
-  @country = @game.country
+  @locatable = @game.locatable
   @guesses = @game.guesses
   erb :'games/game_winner'
 end
@@ -38,7 +37,7 @@ get '/games/:game_id' do
     if @game.guesses.length < @game.difficulty
       erb :'games/show'
     else
-      @country = @game.country
+      @locatable = @game.locatable
       @guesses = @game.guesses
       erb :'games/game_loser'
     end

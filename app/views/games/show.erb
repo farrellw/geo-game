@@ -1,5 +1,5 @@
 <section class="container">
-  <h4>You are looking for <%=@game.country.name%>.  Goodluck!!!!</h4>
+  <h4>You are looking for <%=@game.locatable.name%>.  Goodluck!!!!</h4>
   <div>
     <h4>Make your guess below</h4>
     <form action="/games/<%=@game.id%>/guess" method="POST">
